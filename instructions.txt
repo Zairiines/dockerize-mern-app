@@ -1,0 +1,24 @@
+Remarque importante : vérifier que les ports indiqués ne sont pas occupés dans le serveur VPS
+0) ajout des fichiers Dockerfile dans Backend et Frontend, et ajouter le fichier docker-compose.yaml
+1) cloner le projet pushé dans github sur le serveur VPS :  depuis le repo (web github) code et copier le lien
+2) aller ouvrir machine VPS, login    pass ; git clone lien copié   Et le dossier est pushé dans le serveur VPS
+3) cd nom_projet      cd backend    npm i   (pour installer les dependences dans le back) 
+4) cd ..  cd frontend   npm i (pour installer les dépendences du frontend)
+5) nano server.js (port doit etre 5000)   nano Dockerfile  , backend (numero de port 5000) 
+6) nano Dockerfile , frontend (numero de port 3000)  apres nano package.json (dans frontend) port 5000 pour backend
+   et changer localhost par l’@ip du VPS),  
+7) nano Dockercompose.yaml , parent , fixer les deux ports 3000 et 5000 et changer les container_name du backend et frontend
+8) dans le fichier  .env   le port doit être 5000
+
+Après dans le terminal du VPS :
+1- afficher tous les containers pour les conflits de ports
+2- pour créer l'image Docker
+3- supprimer une image sur laquelle il y aura la modification
+sudo docker container ls   (conflit du nom, pas obligatoire)
+sudo docker-compose up --build –d    (dans le dossier parent, obligatoire)
+sudo docker rm -f "Name Of Container"  (supprimer un container, pas obligatoire)
+
+
+
+
+
